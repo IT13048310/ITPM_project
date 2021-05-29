@@ -115,7 +115,6 @@ String subject = rs3.getString("subject");
         slecture = new javax.swing.JComboBox<>();
         stag = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
-        next = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         sgroup = new javax.swing.JComboBox<>();
@@ -167,13 +166,6 @@ String subject = rs3.getString("subject");
             }
         });
 
-        next.setText("jButton1");
-        next.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -188,18 +180,16 @@ String subject = rs3.getString("subject");
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
-                        .addComponent(seletLec, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(seletLec, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)))
+                .addGap(60, 60, 60)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(stag, 0, 198, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stag, 0, 181, Short.MAX_VALUE)
                 .addGap(170, 170, 170))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(next)
-                .addGap(164, 164, 164)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(181, 181, 181))
+                .addGap(203, 203, 203))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,14 +205,9 @@ String subject = rs3.getString("subject");
                             .addComponent(stag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(56, 56, 56)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(next)
-                        .addGap(45, 45, 45))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
         );
 
         jTabbedPane1.addTab("Select Lecturer & Tag", jPanel1);
@@ -388,6 +373,10 @@ String subject = rs3.getString("subject");
         
                 String faculty = slecture.getSelectedItem().toString();
 
+                
+                
+                String tvdata1[];
+
                seletLec.setText(faculty);
         
         
@@ -446,7 +435,17 @@ statement.setString(6, durations);
 //
 int rowsInserted = statement.executeUpdate();
 if (rowsInserted > 0) {
-   JOptionPane.showMessageDialog(null, "inserted successfully!");        
+   JOptionPane.showMessageDialog(null, "inserted successfully!");      
+   
+
+            try{
+                    Welcome frame = new Welcome();
+                dispose();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }   
+
 //
 //    
 }
@@ -476,20 +475,6 @@ if (rowsInserted > 0) {
     private void nostdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nostdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nostdActionPerformed
-
-    private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
-        // TODO add your handling code here:
-        
-         String selectl2 = seletLec.getText();
-        
-         
-         String tags = stag.getSelectedItem().toString();
-         
-         System.out.println(selectl2 + tags);
-        
-        
-        
-    }//GEN-LAST:event_nextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -545,7 +530,6 @@ if (rowsInserted > 0) {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JButton next;
     private javax.swing.JTextField nostd;
     private javax.swing.JTextField seletLec;
     private javax.swing.JComboBox<String> sgroup;
